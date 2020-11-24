@@ -1,9 +1,11 @@
 import React from 'react';
 
 const HomePage = () => {
-    return ( 
-        <h2>This is a homepage</h2>
-     );
+    return (
+        <div className="m-20 text-center">
+            <h2>Welcome to Project Hunt</h2>
+        </div>
+    );
 }
- 
+
 export default HomePage;

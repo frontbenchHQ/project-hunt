@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from './components/Layout';
-import './App.css';
+import './assets/styles/main.css'
+
 import { BrowserRouter, Route } from 'react-router-dom'
 import HomePage from './pages/HomePage';
 import ProjectShowcase from './pages/ProjectShowcase';

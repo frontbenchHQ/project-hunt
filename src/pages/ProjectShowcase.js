@@ -1,9 +1,11 @@
 import React from 'react';
 
 const ProjectShowcase = () => {
-    return ( 
-        <h2>This is a project showcase page</h2>
-     );
+    return (
+        <div className="m-20 text-center">
+            <h2>Here are some awesome projects</h2>
+        </div>
+    );
 }
- 
+
 export default ProjectShowcase;
