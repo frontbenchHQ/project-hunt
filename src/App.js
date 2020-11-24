@@ -1,13 +1,22 @@
 import React from 'react';
 import Layout from './components/Layout';
 import './App.css';
+import { BrowserRouter, Route } from 'react-router-dom'
+import HomePage from './pages/HomePage';
+import ProjectShowcase from './pages/ProjectShowcase';
+import Login from './pages/Login';
 
 function App() {
   return (
     <div className="App">
+      <BrowserRouter>
       <Layout>
-<h1>hi</h1>
+        <Route exact path="/" component={HomePage} />
+        <Route exact path="/showcase" component={ProjectShowcase} />
+        <Route exact path="/login" component={Login} />
+
       </Layout>
+      </BrowserRouter>
     </div>
   );
 }
