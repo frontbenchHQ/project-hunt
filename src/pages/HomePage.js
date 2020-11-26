@@ -1,9 +1,11 @@
 import React from 'react';
-
+import FeaturedProjects from '../components/FeaturedProjects';
 const HomePage = () => {
     return (
-        <div className="m-20 text-center">
-            <h2>Welcome to Project Hunt</h2>
+        <div className="mt-20 text-center">
+            <div className="max-w-screen-md ">
+                <FeaturedProjects/>
+            </div>
         </div>
     );
 }

@@ -3,7 +3,7 @@ import Navbar from './Navbar';
 
 const Layout = (props) => {
     return (
-        <div>
+        <div className="bg-gray-50">
             <Navbar />
             {props.children}
         </div>
