@@ -14,7 +14,7 @@ const HomePage = () => {
                     <Link to="/login"><button className="bg-purple-500 text-white px-4 py-2 rounded text-xl mt-4">Join Now</button></Link>
                 </div>
 
-                <img src={collabImage} className="md:m-4 md:max-w-screen-md" />
+                <img src={collabImage} alt="collab-image" className="md:m-4 md:max-w-screen-md" />
             </div>
             
             <div className="flex md:flex-row flex-col justify-center">
