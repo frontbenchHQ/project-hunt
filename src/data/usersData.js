@@ -1,4 +1,4 @@
-export default [
+const topUsers = [
     {
         fullName: "Rutik Wankhade",
         avatar: "https://www.flaticon.com/svg/static/icons/svg/847/847969.svg"
@@ -22,3 +22,5 @@ export default [
 
 
 ];
+
+export default topUsers;

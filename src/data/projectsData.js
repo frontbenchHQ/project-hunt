@@ -1,4 +1,4 @@
-export default [
+const allProjects = [
 
     {
         projectName: 'Portfolio',
@@ -32,3 +32,5 @@ export default [
     }
 
 ]
+
+export default allProjects;
