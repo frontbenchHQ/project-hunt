@@ -1,8 +1,8 @@
 import React from 'react';
-import FeaturedProjects from '../components/FeaturedProjects';
 import collabImage from '../assets/images/collab-image.svg';
 import { Link } from 'react-router-dom';
-import TopMakers from '../components/TopMakers';
+import FeaturedProjects from '../components/FeaturedProjects';
+import FeaturedUsers from '../components/FeaturedUsers';
 
 const HomePage = () => {
     return (
@@ -16,10 +16,10 @@ const HomePage = () => {
 
                 <img src={collabImage} alt="collab-illustration" className="md:m-4 md:max-w-screen-md" />
             </div>
-            
+
             <div className="flex md:flex-row flex-col justify-center">
                 <FeaturedProjects />
-                <TopMakers />
+                <FeaturedUsers />
             </div>
         </div>
     );
