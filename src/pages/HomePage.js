@@ -1,8 +1,8 @@
 import React from 'react';
-import collabImage from '../assets/images/collab-image.svg';
+import collabImage from 'assets/images/collab-image.svg';
 import { Link } from 'react-router-dom';
-import FeaturedProjects from '../components/FeaturedProjects';
-import FeaturedUsers from '../components/FeaturedUsers';
+import FeaturedProjects from 'components/FeaturedProjects';
+import FeaturedUsers from 'components/FeaturedUsers';
 
 const HomePage = () => {
     return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import upvoteIcon from '../assets/images/upvoteIcon.svg';
+import upvoteIcon from 'assets/images/upvoteIcon.svg';
 
 
 const UpvoteBtn = ({ upvoteCount }) => {

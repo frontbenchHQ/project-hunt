@@ -1,6 +1,6 @@
 import React from 'react';
 import UserCard from './UserCard';
-import topUsers from '../data/usersData';
+import topUsers from 'data/usersData';
 
 
 const FeaturedUsers = () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import ProjectCard from './ProjectCard';
-import allProjects from '../data/projectsData';
+import allProjects from 'data/projectsData';
 
 const FeaturedProjects = () => {
 
