@@ -1,5 +1,25 @@
-# Getting Started with Create React App
+# Static Data format
+const User = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: "",
+  socialUrl: [],
+  bio: "",
+  projectsId: [],
+};
 
+const Project = {
+  createdAt: "",
+  isFeatured: Boolean,
+  projectName: "",
+  imgUrl: "",
+  description: "",
+  category: [],
+  language: [],
+  upvotes: 0,
+  userId: "",
+};
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
