@@ -1,25 +1,28 @@
 # Static Data format
+
+```
 const User = {
-  firstName: "",
-  lastName: "",
-  email: "",
-  password: "",
-  socialUrl: [],
-  bio: "",
-  projectsId: [],
+  firstName: String,
+  lastName: String,
+  email: String,
+  password: String,
+  socialUrl: Array(Object),
+  bio: String,
+  projectsId: Array(String),
 };
 
 const Project = {
-  createdAt: "",
+  createdAt: String,
   isFeatured: Boolean,
-  projectName: "",
-  imgUrl: "",
-  description: "",
-  category: [],
-  language: [],
-  upvotes: 0,
-  userId: "",
+  projectName: String,
+  imgUrl: String,
+  description: String,
+  category: Array(String),
+  language: Array(String),
+  upvotes: Number,
+  userId: String,
 };
+```
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
