@@ -15,8 +15,9 @@ function App() {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/showcase" component={ProjectShowcase} />
         <Route exact path="/login" component={Login} />
-        <Route exact path="/projectdetails" component={ProjectDetails}/>
-
+        <Route exact path="/projectdetails" >
+          <ProjectDetails />
+        </Route>
         <footer className="p-8 bg-purple-200 bottom-0 mx-auto w-full"></footer>
       </BrowserRouter>
     </div>
