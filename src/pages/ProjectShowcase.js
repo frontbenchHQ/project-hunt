@@ -17,10 +17,14 @@ const ProjectShowcase = () => {
                 selected={selected}
                 onSelectedChange={setSelected}
             />
-            <div>
+            <div className="flex flex-row flex-wrap justify-center">
                 {
                     allProjects.map(project => {
-                        return <ProjectCard project={project} />
+                        return (
+                            <div className="m-2 md:w-2/5">
+                                <ProjectCard project={project} />
+                            </div>
+                        )
 
                     })
                 }

@@ -6,6 +6,7 @@ import HomePage from 'pages/HomePage';
 import ProjectShowcase from 'pages/ProjectShowcase';
 import Login from 'pages/Login';
 import ProjectDetails from './components/ProjectDetails';
+import AddNewProject from './components/AddNewProject';
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/showcase" component={ProjectShowcase} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/addnewproject" component={AddNewProject} />
+
         <Route exact path="/projectdetails" >
           <ProjectDetails />
         </Route>

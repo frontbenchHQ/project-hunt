@@ -24,6 +24,8 @@ const AuthorDetails = () => {
                     <a href="https://github.com"><img src={githubIcon} className="w-6 m-2" alt="icon" /></a>
                     <a href="https://www.linkedin.com"><img src={linkedinIcon} className="w-6 m-2" alt="icon" /></a>
                 </div>
+
+
             </div>
         </div>
     );
