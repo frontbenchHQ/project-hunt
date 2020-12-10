@@ -16,14 +16,23 @@ const Navbar = () => {
           </div>
         </Link>
         <div className="ml-auto md:text-lg text-sm font-medium flex flex-wrap items-center  justify-center">
+    
+          <Link to="/addnewproject">
+            <span className="m-2">
+              Add Project
+            </span>
+          </Link>
+    
           <Link to="/showcase">
             <span className="m-2">Showcase</span>
           </Link>
+    
           <Link to="/login">
             <span className="m-2 border-2 p-1 rounded hover:bg-purple-500">
               Login
             </span>
           </Link>
+    
         </div>
       </div>
     </header>
