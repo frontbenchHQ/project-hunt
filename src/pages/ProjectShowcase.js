@@ -1,12 +1,39 @@
-import React, { useState } from 'react';
-import allProjects from 'data/projectsData';
+import React, { useEffect, useState } from 'react';
 import ProjectCard from '../components/ProjectCard';
 import Dropdown from '../components/Dropdown';
+import loaderIcon from 'assets/images/loader.svg';
+
 
 const ProjectShowcase = () => {
     const options = ['Top Voted', 'Recently added', 'Featured']
 
     const [selected, setSelected] = useState(options[0]);
+    const [fetchedProjects, setFetchedProjects] = useState([]);
+    const [loading, setLoading] = useState(false);
+
+
+    useEffect(() => {
+        setLoading(true);
+        fetch('https://projecthunt-api.herokuapp.com/project')
+            .then(res => res.json())
+            .then(data => {
+                setFetchedProjects(data.projects)
+                setLoading(false);
+                console.log(data);
+            })
+            .catch(error => { console.log(error) })
+    }, [])
+
+    const showLoading = () => {
+        return (
+            <div className=" py-20 mb-40">
+                <img src={loaderIcon} alt="loading" className="w-14 mb-4 mx-auto transform animate-spin rotate-180" />
+                <h1 className="md:text-xl text-lg">
+                    Curating Projects for you
+                </h1>
+            </div>
+        )
+    }
 
     return (
         <div className="md:px-60 p-2 text-center">
@@ -18,14 +45,13 @@ const ProjectShowcase = () => {
                 onSelectedChange={setSelected}
             />
             <div className="flex flex-row flex-wrap justify-center">
-                {
-                    allProjects.map(project => {
+                {loading ? showLoading() :
+                    fetchedProjects.map(project => {
                         return (
                             <div className="m-2 md:w-2/5">
                                 <ProjectCard project={project} />
                             </div>
                         )
-
                     })
                 }
             </div>
