@@ -1,12 +1,12 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import axios from 'axios';
+import { createProject } from "utils/api";
+
 
 const AddNewProject = () => {
     const { register, errors, handleSubmit } = useForm();
 
     const onSubmit = (data) => {
-        // console.log(data);
         let tech = data.language.split(',');
 
         let project = {
@@ -17,11 +17,7 @@ const AddNewProject = () => {
             "userId": "1"
         }
 
-        console.log(project);
-
-        axios.post('https://projecthunt-api.herokuapp.com/project', project)
-            .then(response => console.log(response))
-            .catch(error => console.log(error))
+        createProject(project);
     }
 
     return (

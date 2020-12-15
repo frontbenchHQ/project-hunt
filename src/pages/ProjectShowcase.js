@@ -2,26 +2,24 @@ import React, { useEffect, useState } from 'react';
 import ProjectCard from '../components/ProjectCard';
 import Dropdown from '../components/Dropdown';
 import loaderIcon from 'assets/images/loader.svg';
+import { getAllProjects } from 'utils/api';
 
 
 const ProjectShowcase = () => {
     const options = ['Top Voted', 'Recently added', 'Featured']
 
     const [selected, setSelected] = useState(options[0]);
-    const [fetchedProjects, setFetchedProjects] = useState([]);
+    const [allProjects, setAllProjects] = useState([]);
     const [loading, setLoading] = useState(false);
-
 
     useEffect(() => {
         setLoading(true);
-        fetch('https://projecthunt-api.herokuapp.com/project')
-            .then(res => res.json())
-            .then(data => {
-                setFetchedProjects(data.projects)
+        getAllProjects()
+            .then(res => {
+                setAllProjects(res.data.projects)
                 setLoading(false);
-                console.log(data);
             })
-            .catch(error => { console.log(error) })
+
     }, [])
 
     const showLoading = () => {
@@ -46,7 +44,7 @@ const ProjectShowcase = () => {
             />
             <div className="flex flex-row flex-wrap justify-center">
                 {loading ? showLoading() :
-                    fetchedProjects.map(project => {
+                    allProjects.map(project => {
                         return (
                             <div className="m-2 md:w-2/5">
                                 <ProjectCard project={project} />
