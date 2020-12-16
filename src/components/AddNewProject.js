@@ -1,10 +1,24 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { createProject } from "utils/api";
+
 
 const AddNewProject = () => {
     const { register, errors, handleSubmit } = useForm();
 
-    const onSubmit = data => console.log(data);
+    const onSubmit = (data) => {
+        let tech = data.language.split(',');
+
+        let project = {
+            "projectName": data.projectName,
+            "description": data.description,
+            "category": ["Frontend"],
+            "language": tech,
+            "userId": "1"
+        }
+
+        createProject(project);
+    }
 
     return (
         <div className="md:px-20 p-4 py-8 bg-white md:mx-72 md:mt-20 shadow rounded-md ">
@@ -21,10 +35,10 @@ const AddNewProject = () => {
                             type="text"
                             className="bg-gray-100 p-2 m-2 focus:outline-none"
                             placeholder="Myapp"
-                            name="projectname"
+                            name="projectName"
                             ref={register({ required: true })}
                         />
-                        {errors.projectname && <p className="text-red-400">*Project name is required</p>}
+                        {errors.projectName && <p className="text-red-400">*Project name is required</p>}
                     </div>
 
                     <div className="flex flex-col">
