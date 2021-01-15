@@ -1,19 +1,22 @@
 import { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "redux/actions/userAction";
+import { register } from "redux/actions/userAction";
 
-const Login = () => {
+const Signup = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const userLogin = useSelector((state) => state.userLogin);
-  const { loading, error, userInfo } = userLogin;
+  const userRegister = useSelector((state) => state.userRegister);
+  const { loading, error, success } = userRegister;
 
   useEffect(() => {
-    if (userInfo) {
-      history.push("/");
+    if (success) {
+      history.push("/login");
     }
-  }, [userInfo, history]);
+  });
+
+  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const handleInputChange = (e) => {
@@ -23,22 +26,48 @@ const Login = () => {
     if (e.target.name === "password") {
       setPassword(e.target.value);
     }
+    if (e.target.name === "username") {
+      setUsername(e.target.value);
+    }
+    if (e.target.name === "name") {
+      setName(e.target.value);
+    }
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(login(email, password));
+    dispatch(register(username, name, email, password));
   };
   return (
     <div
       style={{ minHeight: "calc(100vh - 128px)" }}
       className="flex justify-center items-center"
     >
-      <div className=" bg-white mx-auto md:w-1/3 p-10 shadow-md rounded-md">
+      <div className=" bg-white mx-auto md:w-1/3 p-6 shadow-md rounded-md">
         <h2 className="text-2xl font-semibold text-blue-500 text-center">
-          Login
+          Signup
         </h2>
         {error && <p className=" font-semibold text-red-500 ">{error}</p>}
         <form onSubmit={handleSubmit}>
+          <div className="flex flex-col">
+            <label className="text-lg ml-2">Username</label>
+            <input
+              type="text"
+              name="username"
+              value={username}
+              onChange={handleInputChange}
+              className="bg-gray-100 p-2 m-2 border border-gray-400 focus:outline-none"
+            />
+          </div>
+          <div className="flex flex-col">
+            <label className="text-lg ml-2">Name</label>
+            <input
+              type="text"
+              name="name"
+              value={name}
+              onChange={handleInputChange}
+              className="bg-gray-100 p-2 m-2 border border-gray-400 focus:outline-none"
+            />
+          </div>
           <div className="flex flex-col">
             <label className="text-lg ml-2">Email</label>
             <input
@@ -60,12 +89,12 @@ const Login = () => {
             />
           </div>
           <button className="text-lg bg-blue-500 text-white py-2 px-4 rounded w-34 mx-auto flex m-2">
-            {loading ? "Loading" : "Log in"}
+            {loading ? "Loading" : "Sign Up"}
           </button>
         </form>
-        <Link to="/signup">
+        <Link to="/login">
           <p className=" font-semibold text-purple-500 ">
-            New User? Click Here
+            Already User? Click Here
           </p>
         </Link>
       </div>
@@ -73,4 +102,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;
