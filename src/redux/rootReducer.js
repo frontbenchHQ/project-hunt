@@ -10,6 +10,8 @@ import {
   userRegisterReducer,
   topMakerUserReducer,
   userProfileReducer,
+  currentUserProfileReducer,
+  updateUserProfileReducer,
 } from "./reducers/userReducer";
 
 const rootReducer = combineReducers({
@@ -17,6 +19,8 @@ const rootReducer = combineReducers({
   userRegister: userRegisterReducer,
   topMakerUser: topMakerUserReducer,
   userProfile: userProfileReducer,
+  currentUserProfile: currentUserProfileReducer,
+  updateUserProfile: updateUserProfileReducer,
   addProject: addProjectReducer,
   singleProject: singleProjectReducer,
   allProjects: allProjectsReducer,

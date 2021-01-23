@@ -1,4 +1,3 @@
-import React from "react";
 import collabImage from "assets/images/collab-image.svg";
 import { Link } from "react-router-dom";
 import FeaturedProjects from "components/FeaturedProjects";

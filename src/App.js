@@ -11,6 +11,7 @@ import ProtectedRoutes from "components/ProtectedRoutes";
 import Signup from "pages/Signup";
 import ProfilePage from "pages/ProfilePage";
 import "./global.css";
+import ProfileUpdatePage from "pages/ProfileUpdatePage";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route exact path="/showcase" component={ProjectShowcase} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
+          <Route exact path="/profile-setting" component={ProfileUpdatePage} />
           <Route exact path="/profile/:username" component={ProfilePage} />
           <ProtectedRoutes
             exact

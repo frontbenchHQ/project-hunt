@@ -10,10 +10,17 @@ import {
   USER_PROFILE_FAIL,
   USER_PROFILE_REQUEST,
   USER_PROFILE_SUCCESS,
+  UPDATE_USER_PROFILE_FAIL,
+  UPDATE_USER_PROFILE_REQUEST,
+  UPDATE_USER_PROFILE_SUCCESS,
+  CURRENT_USER_PROFILE_FAIL,
+  CURRENT_USER_PROFILE_REQUEST,
+  CURRENT_USER_PROFILE_SUCCESS,
   USER_LOGOUT,
   TOPMAKERS_USER_FAIL,
   TOPMAKERS_USER_REQUEST,
   TOPMAKERS_USER_SUCCESS,
+  CURRENT_USER_PROFILE_RESET,
 } from "redux/actionTypes";
 export const login = (email, password) => async (dispatch) => {
   try {
@@ -46,6 +53,7 @@ export const login = (email, password) => async (dispatch) => {
 
 export const logout = () => (dispatch) => {
   localStorage.removeItem("userInfo");
+  dispatch({ type: CURRENT_USER_PROFILE_RESET });
   dispatch({ type: USER_LOGOUT });
 };
 
@@ -128,6 +136,77 @@ export const getUserProfile = (username) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: USER_PROFILE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const getCurrentUserProfile = () => async (dispatch, getState) => {
+  try {
+    dispatch({ type: CURRENT_USER_PROFILE_REQUEST });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+        "Content-Type": "application/json",
+      },
+    };
+
+    const { data } = await axios.get(`${BASE_URL}/api/user/current`, config);
+
+    dispatch({
+      type: CURRENT_USER_PROFILE_SUCCESS,
+      payload: data.user,
+    });
+  } catch (error) {
+    dispatch({
+      type: CURRENT_USER_PROFILE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const updateCurrentUserProfile = (userData) => async (
+  dispatch,
+  getState
+) => {
+  try {
+    dispatch({ type: UPDATE_USER_PROFILE_REQUEST });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+        "Content-Type": "application/json",
+      },
+    };
+
+    const { data } = await axios.get(
+      `${BASE_URL}/api/user/update`,
+      userData,
+      config
+    );
+
+    dispatch({
+      type: UPDATE_USER_PROFILE_SUCCESS,
+      payload: data.user,
+    });
+  } catch (error) {
+    dispatch({
+      type: UPDATE_USER_PROFILE_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

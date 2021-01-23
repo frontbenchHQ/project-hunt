@@ -15,6 +15,14 @@ import {
   USER_PROFILE_REQUEST,
   USER_PROFILE_RESET,
   USER_PROFILE_SUCCESS,
+  UPDATE_USER_PROFILE_FAIL,
+  UPDATE_USER_PROFILE_REQUEST,
+  UPDATE_USER_PROFILE_RESET,
+  UPDATE_USER_PROFILE_SUCCESS,
+  CURRENT_USER_PROFILE_FAIL,
+  CURRENT_USER_PROFILE_REQUEST,
+  CURRENT_USER_PROFILE_RESET,
+  CURRENT_USER_PROFILE_SUCCESS,
 } from "redux/actionTypes";
 
 const userLoginState = {
@@ -77,6 +85,36 @@ export const userProfileReducer = (state = {}, { type, payload }) => {
     case USER_PROFILE_FAIL:
       return { loading: false, error: payload };
     case USER_PROFILE_RESET:
+      return {};
+    default:
+      return state;
+  }
+};
+
+export const currentUserProfileReducer = (state = {}, { type, payload }) => {
+  switch (type) {
+    case CURRENT_USER_PROFILE_REQUEST:
+      return { loading: true };
+    case CURRENT_USER_PROFILE_SUCCESS:
+      return { loading: false, currentUserProfileInfo: payload };
+    case CURRENT_USER_PROFILE_FAIL:
+      return { loading: false, error: payload };
+    case CURRENT_USER_PROFILE_RESET:
+      return {};
+    default:
+      return state;
+  }
+};
+
+export const updateUserProfileReducer = (state = {}, { type, payload }) => {
+  switch (type) {
+    case UPDATE_USER_PROFILE_REQUEST:
+      return { loading: true };
+    case UPDATE_USER_PROFILE_SUCCESS:
+      return { loading: false, success: true };
+    case UPDATE_USER_PROFILE_FAIL:
+      return { loading: false, error: payload };
+    case UPDATE_USER_PROFILE_RESET:
       return {};
     default:
       return state;
