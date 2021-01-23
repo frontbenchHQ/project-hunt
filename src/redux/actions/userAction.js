@@ -7,7 +7,13 @@ import {
   USER_REGISTER_FAIL,
   USER_REGISTER_REQUEST,
   USER_REGISTER_SUCCESS,
+  USER_PROFILE_FAIL,
+  USER_PROFILE_REQUEST,
+  USER_PROFILE_SUCCESS,
   USER_LOGOUT,
+  TOPMAKERS_USER_FAIL,
+  TOPMAKERS_USER_REQUEST,
+  TOPMAKERS_USER_SUCCESS,
 } from "redux/actionTypes";
 export const login = (email, password) => async (dispatch) => {
   try {
@@ -65,6 +71,63 @@ export const register = (username, name, email, password) => async (
   } catch (error) {
     dispatch({
       type: USER_REGISTER_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const getTopMakers = () => async (dispatch) => {
+  try {
+    dispatch({ type: TOPMAKERS_USER_REQUEST });
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const { data } = await axios.get(`${BASE_URL}/api/user/topmakers`, config);
+
+    dispatch({
+      type: TOPMAKERS_USER_SUCCESS,
+      payload: data.users,
+    });
+  } catch (error) {
+    dispatch({
+      type: TOPMAKERS_USER_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const getUserProfile = (username) => async (dispatch) => {
+  try {
+    dispatch({ type: USER_PROFILE_REQUEST });
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const { data } = await axios.get(
+      `${BASE_URL}/api/user/profile/${username}`,
+      config
+    );
+
+    dispatch({
+      type: USER_PROFILE_SUCCESS,
+      payload: data.user,
+    });
+  } catch (error) {
+    dispatch({
+      type: USER_PROFILE_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

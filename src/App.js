@@ -9,6 +9,8 @@ import ProjectDetails from "./components/ProjectDetails";
 import AddNewProject from "./components/AddNewProject";
 import ProtectedRoutes from "components/ProtectedRoutes";
 import Signup from "pages/Signup";
+import ProfilePage from "pages/ProfilePage";
+import "./global.css";
 
 function App() {
   return (
@@ -20,13 +22,14 @@ function App() {
           <Route exact path="/showcase" component={ProjectShowcase} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
+          <Route exact path="/profile/:username" component={ProfilePage} />
           <ProtectedRoutes
             exact
             path="/addnewproject"
             component={AddNewProject}
           />
 
-          <Route exact path="/projectdetails">
+          <Route exact path="/projectdetails/:projectId">
             <ProjectDetails />
           </Route>
           <Redirect to="/" />

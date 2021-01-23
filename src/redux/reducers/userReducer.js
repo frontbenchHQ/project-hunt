@@ -5,7 +5,16 @@ import {
   USER_LOGOUT,
   USER_REGISTER_FAIL,
   USER_REGISTER_REQUEST,
+  USER_REGISTER_RESET,
   USER_REGISTER_SUCCESS,
+  TOPMAKERS_USER_FAIL,
+  TOPMAKERS_USER_REQUEST,
+  TOPMAKERS_USER_RESET,
+  TOPMAKERS_USER_SUCCESS,
+  USER_PROFILE_FAIL,
+  USER_PROFILE_REQUEST,
+  USER_PROFILE_RESET,
+  USER_PROFILE_SUCCESS,
 } from "redux/actionTypes";
 
 const userLoginState = {
@@ -37,6 +46,38 @@ export const userRegisterReducer = (state = {}, { type, payload }) => {
       return { loading: false, success: true, userInfo: payload };
     case USER_REGISTER_FAIL:
       return { loading: false, error: payload, success: false };
+    case USER_REGISTER_RESET:
+      return {};
+    default:
+      return state;
+  }
+};
+
+export const topMakerUserReducer = (state = {}, { type, payload }) => {
+  switch (type) {
+    case TOPMAKERS_USER_REQUEST:
+      return { loading: true };
+    case TOPMAKERS_USER_SUCCESS:
+      return { loading: false, topMakerUserInfo: payload };
+    case TOPMAKERS_USER_FAIL:
+      return { loading: false, error: payload };
+    case TOPMAKERS_USER_RESET:
+      return {};
+    default:
+      return state;
+  }
+};
+
+export const userProfileReducer = (state = {}, { type, payload }) => {
+  switch (type) {
+    case USER_PROFILE_REQUEST:
+      return { loading: true };
+    case USER_PROFILE_SUCCESS:
+      return { loading: false, userProfileInfo: payload };
+    case USER_PROFILE_FAIL:
+      return { loading: false, error: payload };
+    case USER_PROFILE_RESET:
+      return {};
     default:
       return state;
   }
