@@ -32,7 +32,7 @@ const HomePage = () => {
         <FeaturedUsers />
       </div>
 
-      <div className="justify-center md:flex md:m-12 m-2">
+      {/* <div className="justify-center md:flex md:m-12 m-2">
         <div className="border-2 border-gray-200 p-8 rounded-lg bg-green-100 m-8 text-center">
           <h2 className="title-font font-medium text-5xl text-gray-600">20+</h2>
           <p className="text-xl text-gray-400">Projects submitted</p>
@@ -42,7 +42,7 @@ const HomePage = () => {
           <h2 className="title-font font-medium text-5xl text-gray-600">50+</h2>
           <p className="text-xl text-gray-400">Makers Joined</p>
         </div>
-      </div>
+      </div> */}
 
       {/* <div className="flex justify-center items-center md:w-7/12">
         <img src={collabImage} alt="collab-illustration" className=" " />

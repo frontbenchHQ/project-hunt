@@ -1,3 +1,4 @@
+import Axios from "axios";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
@@ -5,45 +6,38 @@ import {
   getCurrentUserProfile,
   updateCurrentUserProfile,
 } from "redux/actions/userAction";
+import { UPDATE_USER_PROFILE_RESET } from "redux/actionTypes";
 // import { addProject } from "redux/actions/projectAction";
 // import { useHistory } from "react-router-dom";
 // import { ADD_PROJECT_RESET } from "redux/actionTypes";
 const ProfileUpdatePage = () => {
   const currentUserProfile = useSelector((state) => state.currentUserProfile);
-  const { loading, currentUserProfileInfo } = currentUserProfile;
-  let defaultvalue = {
-    defaultvalues: {},
-  };
-  if (currentUserProfileInfo) {
-    defaultvalue = {
-      defaultValues: {
-        name: currentUserProfileInfo.name,
-        username: currentUserProfileInfo.username,
-        linkedin: currentUserProfileInfo.socialUrl.linkedin,
-        github: currentUserProfileInfo.socialUrl.github,
-      },
-    };
-  }
+  const { currentUserProfileInfo } = currentUserProfile;
   const { register, errors, handleSubmit, setValue } = useForm();
   const dispatch = useDispatch();
   const updateUserProfile = useSelector((state) => state.updateUserProfile);
-  const { loading: updateLoading, success } = updateUserProfile;
+  const {
+    loading: updateLoading,
+    success,
+    error: updateError,
+  } = updateUserProfile;
 
   useEffect(() => {
     if (!currentUserProfileInfo) {
       dispatch(getCurrentUserProfile());
     } else if (success) {
       dispatch(getCurrentUserProfile());
+      dispatch({ type: UPDATE_USER_PROFILE_RESET });
     } else {
       setValue("name", currentUserProfileInfo.name);
       setValue("username", currentUserProfileInfo.username);
-      setValue("linkedin", currentUserProfileInfo.linkedin);
-      setValue("github", currentUserProfileInfo.github);
-      setValue("twitter", currentUserProfileInfo.twitter);
-      setValue("stackoverflow", currentUserProfileInfo.stackoverflow);
-      setValue("personal", currentUserProfileInfo.personal);
+      setValue("linkedin", currentUserProfileInfo.socialUrl.linkedin);
+      setValue("github", currentUserProfileInfo.socialUrl.github);
+      setValue("twitter", currentUserProfileInfo.socialUrl.twitter);
+      setValue("stackoverflow", currentUserProfileInfo.socialUrl.stackoverflow);
+      setValue("personal", currentUserProfileInfo.socialUrl.personal);
     }
-  }, [success, currentUserProfileInfo, setValue, dispatch]);
+  }, [currentUserProfileInfo, success, setValue, dispatch]);
 
   const onSubmit = (input) => {
     const data = new FormData();
@@ -54,21 +48,30 @@ const ProfileUpdatePage = () => {
     data.append("twitter", input.twitter);
     data.append("stackoverflow", input.stackoverflow);
     data.append("personal", input.personal);
+
     if (input.profileImg.length) {
-      data.append("profileImg", input.profileImg);
+      for (const file of input.profileImg) {
+        data.append("profileImg", file);
+      }
     }
+    Axios.post("https://httpbin.org/anything", data).then((res) =>
+      console.log(res)
+    );
+    console.log([...data.values()]);
     dispatch(updateCurrentUserProfile(data));
   };
 
   return (
     <div className="md:px-20 p-4 py-8 bg-white md:mx-72 md:mt-20 shadow rounded-md ">
-      <h1 className="md:text-3xl text-2xl text-center mb-20  text-gray-800 font-semibold">
+      <h1 className="md:text-3xl text-2xl text-center mb-10  text-gray-800 font-semibold">
         Profile Update
       </h1>
-      {/* {error && <p className=" font-semibold text-red-500 ">{error}</p>} */}
+      {updateError && (
+        <p className=" font-semibold text-red-500 ">{updateError}</p>
+      )}
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col">
-          <label className="text-lg ml-2">Profile Image</label>
+          <label className="text-lg ml-2">Profile Image (max. 500KB)</label>
           <input type="file" name="profileImg" className="m-2" ref={register} />
         </div>
         <div className="flex flex-col">

@@ -23,7 +23,7 @@ const ProfilePage = () => {
     };
   }, [dispatch]);
   return (
-    <div div className="md:px-40 p-2 min-window-height ">
+    <div className="md:px-40 p-2 min-window-height ">
       {loading ? (
         <Loader message={"Profile Loading"} />
       ) : error ? (

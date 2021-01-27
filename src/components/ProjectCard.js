@@ -1,22 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import subString from "utils/subString";
 import UpvoteBtn from "./UpvoteBtn";
 const ProjectCard = ({ project }) => {
   return (
     <Link to={`/projectdetails/${project._id}`} className="w-full">
       <div className="border rounded-md p-4 text-left flex flex-row bg-white hover:bg-purple-50">
         <img
-          src={
-            "https://res.cloudinary.com/de48n1cto/image/upload/v1611178312/Images/miuhabuv2hdsvma8kcvw.png"
-          }
+          src={project.imgUrl[0].url}
           alt="favicon"
           className="rounded md:w-20 md:h-20 w-16 h-16 my-auto"
         />
         <div className="m-4 ">
           <h2 className="md:text-xl text-md font-medium">
-            {project.projectName}
+            {subString(project.projectName, 25)}
           </h2>
-          <p className=" text-sm">{project.tagline}</p>
+          <p className=" text-sm">{subString(project.tagline, 25)}</p>
         </div>
         <UpvoteBtn upvoteCount={project.totalUpvotes} />
       </div>

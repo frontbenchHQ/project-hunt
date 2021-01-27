@@ -15,7 +15,7 @@ const AuthorDetails = ({ user }) => {
         <div className="flex">
           <img
             src={user.profileImg}
-            className="rounded-full w-16"
+            className="rounded-full w-16 h-16"
             alt="author-img"
           />
           <div className="flex flex-col m-2">

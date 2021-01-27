@@ -23,7 +23,11 @@ function App() {
           <Route exact path="/showcase" component={ProjectShowcase} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
-          <Route exact path="/profile-setting" component={ProfileUpdatePage} />
+          <ProtectedRoutes
+            exact
+            path="/profile-setting"
+            component={ProfileUpdatePage}
+          />
           <Route exact path="/profile/:username" component={ProfilePage} />
           <ProtectedRoutes
             exact

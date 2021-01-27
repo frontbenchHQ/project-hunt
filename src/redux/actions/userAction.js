@@ -194,12 +194,12 @@ export const updateCurrentUserProfile = (userData) => async (
       },
     };
 
-    const { data } = await axios.get(
+    const { data } = await axios.post(
       `${BASE_URL}/api/user/update`,
       userData,
       config
     );
-
+    console.log(data.user);
     dispatch({
       type: UPDATE_USER_PROFILE_SUCCESS,
       payload: data.user,

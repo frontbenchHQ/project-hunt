@@ -37,12 +37,12 @@ const Navbar = () => {
         </Link>
         <div className="ml-auto md:text-lg text-sm font-medium flex flex-wrap items-center  justify-center">
           {userInfo && (
-            <Link to="/addnewproject">
+            <Link to="/addnewproject" className="sm:flex hidden">
               <span className="m-2">Add Project</span>
             </Link>
           )}
 
-          <Link to="/showcase">
+          <Link to="/showcase" className={userInfo ? "sm:flex hidden" : "flex"}>
             <span className="m-2">Showcase</span>
           </Link>
 
@@ -68,7 +68,7 @@ const Navbar = () => {
                 )}
               </div>
               {toogle && (
-                <div className="absolute right-14">
+                <div className="absolute sm:right-14 right-6">
                   <NavDropDown changeToogle={changeToogle} />
                 </div>
               )}

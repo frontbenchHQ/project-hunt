@@ -70,16 +70,19 @@ const AddNewProject = () => {
         </div>
 
         <div className="flex flex-col">
-          <label className="text-lg ml-2">Long Description</label>
+          <label className="text-lg ml-2">
+            Long Description
+            <span className="text-xs pl-1">(min. 200 and max. 600 char)</span>
+          </label>
           <textarea
             type="text"
             name="description"
             placeholder="Describe your app"
             className="bg-gray-100 h-40 p-2 m-2 focus:outline-none"
-            ref={register({ maxLength: 250 })}
+            ref={register({ maxLength: 600 })}
           />
           {errors.description && (
-            <p className="text-red-400">*Reached max limit i.e.250 char</p>
+            <p className="text-red-400">*Reached max limit i.e.600 char</p>
           )}
         </div>
 
@@ -122,7 +125,13 @@ const AddNewProject = () => {
         </div>
 
         <div className="flex flex-col">
-          <label className="text-lg ml-2">Screenshot</label>
+          <label className="text-lg ml-2 flex items-center">
+            Screenshot
+            <span className="text-xs pl-1">(min. 1 and max. 3 images)</span>
+          </label>
+          <p className="text-xs pl-1 ml-2 text-red-400 font-bold">
+            Combined size of all selected files should be less than 500KB
+          </p>
           <input
             type="file"
             name="images"

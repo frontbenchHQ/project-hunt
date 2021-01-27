@@ -15,7 +15,7 @@ const Signup = () => {
       dispatch({ type: USER_REGISTER_RESET });
       history.push("/login");
     }
-  });
+  }, [history, success, dispatch]);
 
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");

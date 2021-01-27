@@ -20,6 +20,25 @@ const NavDropDown = ({ changeToogle }) => {
         <h1 className="p-1">Dashboard</h1>
       </Link>
       <Link
+        to={`/addnewproject`}
+        className="sm:hidden w-36  border-b text-purple-900 pl-2  border-gray-400 flex  hover:bg-purple-300 cursor-pointer"
+        onClick={() => {
+          changeToogle();
+        }}
+      >
+        <h1 className="p-1">Add Project</h1>
+      </Link>
+      <Link
+        to={`/showcase`}
+        className=" w-36  sm:hidden border-b text-purple-900 pl-2  border-gray-400 flex  hover:bg-purple-300 cursor-pointer"
+        onClick={() => {
+          changeToogle();
+        }}
+      >
+        <h1 className="p-1">Showcase</h1>
+      </Link>
+
+      <Link
         to="/profile-setting"
         className=" w-36 border-b text-purple-900 pl-2 border-gray-400 flex  hover:bg-purple-300 cursor-pointer "
         onClick={() => {

@@ -1,4 +1,5 @@
-export const BASE_URL = "http://localhost:1111";
+// export const BASE_URL = "http://localhost:1111";
+export const BASE_URL = "https://projecthunt-api.herokuapp.com";
 
 // user constant
 export const USER_LOGIN_REQUEST = "USER_LOGIN_REQUEST";

@@ -28,12 +28,15 @@ const FeaturedProjects = () => {
         <Loader message="Featured Project" />
       ) : error ? (
         <p className=" font-semibold text-red-500 ">{error}</p>
-      ) : (
-        featuredProjectsInfo &&
-        featuredProjectsInfo.map((project) => {
-          return <ProjectCard key={project._id} project={project} />;
-        })
-      )}
+      ) : featuredProjectsInfo ? (
+        featuredProjectsInfo.length === 0 ? (
+          "We Are Waiting For You to Create a Project"
+        ) : (
+          featuredProjectsInfo.map((project) => {
+            return <ProjectCard key={project._id} project={project} />;
+          })
+        )
+      ) : null}
     </div>
   );
 };

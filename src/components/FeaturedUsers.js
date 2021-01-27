@@ -26,12 +26,11 @@ const FeaturedUsers = () => {
           <Loader message={"Top Users"} />
         ) : error ? (
           <p className=" font-semibold text-red-500 ">{error}</p>
-        ) : (
-          topMakerUserInfo &&
+        ) : topMakerUserInfo ? (
           topMakerUserInfo.map((user) => {
             return <UserCard key={user._id} user={user.user} />;
           })
-        )}
+        ) : null}
       </div>
     </div>
   );
