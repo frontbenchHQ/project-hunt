@@ -1,6 +1,6 @@
 import React from "react";
 import "assets/styles/main.css";
-import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import { HashRouter as Router, Redirect, Route, Switch } from "react-router-dom";
 import Navbar from "components/Navbar";
 import HomePage from "pages/HomePage";
 import ProjectShowcase from "pages/ProjectShowcase";
@@ -16,7 +16,7 @@ import ProfileUpdatePage from "pages/ProfileUpdatePage";
 function App() {
   return (
     <div className="bg-gray-50">
-      <BrowserRouter>
+      <Router>
         <Navbar />
         <Switch>
           <Route exact path="/" component={HomePage} />
@@ -42,7 +42,7 @@ function App() {
         </Switch>
 
         <footer className="p-8 bg-purple-200 bottom-0 mx-auto w-full"></footer>
-      </BrowserRouter>
+      </Router>
     </div>
   );
 }
