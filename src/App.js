@@ -25,7 +25,7 @@ function App() {
           <Route exact path="/signup" component={Signup} />
           <ProtectedRoutes
             exact
-            path="/profile-setting"
+            path="/settings"
             component={ProfileUpdatePage}
           />
           <Route exact path="/profile/:username" component={ProfilePage} />
@@ -35,7 +35,7 @@ function App() {
             component={AddNewProject}
           />
 
-          <Route exact path="/projectdetails/:projectId">
+          <Route exact path="/projects/:projectId">
             <ProjectDetails />
           </Route>
           <Redirect to="/" />
