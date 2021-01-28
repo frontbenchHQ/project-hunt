@@ -39,7 +39,7 @@ const NavDropDown = ({ changeToogle }) => {
       </Link>
 
       <Link
-        to="/profile-setting"
+        to="/settings"
         className=" w-36 border-b text-purple-900 pl-2 border-gray-400 flex  hover:bg-purple-300 cursor-pointer "
         onClick={() => {
           changeToogle();

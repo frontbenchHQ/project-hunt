@@ -4,7 +4,7 @@ import subString from "utils/subString";
 import UpvoteBtn from "./UpvoteBtn";
 const ShowcaseCard = ({ project }) => {
   return (
-    <Link to={`/projectdetails/${project._id}`} className="w-full">
+    <Link to={`/projects/${project._id}`} className="w-full">
       <div className="border rounded-md p-4 text-left flex sm:flex-row flex-col bg-white hover:bg-purple-50 justify-between">
         <div className="flex sm:flex-row flex-col">
           <img
@@ -36,7 +36,7 @@ const ShowcaseCard = ({ project }) => {
             </div>
 
             <Link
-              to={`/projectdetails/${project._id}`}
+              to={`/projects/${project._id}`}
               className=" sm:flex hidden rounded py-2 px-4 text-sm font-bold text-blue-600 ml-4 "
             >
               Read More...
@@ -47,7 +47,7 @@ const ShowcaseCard = ({ project }) => {
         <div className="flex sm:flex-col flex-row-reverse items-center">
           <UpvoteBtn upvoteCount={project.totalUpvotes} />
           <Link
-            to={`/projectdetails/${project._id}`}
+            to={`/projects/${project._id}`}
             className=" sm:hidden flex rounded py-2 px-4 text-sm font-bold text-blue-600 ml-4 "
           >
             Read More...

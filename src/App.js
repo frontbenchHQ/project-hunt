@@ -1,6 +1,6 @@
 import React from "react";
 import "assets/styles/main.css";
-import { HashRouter as Router, Redirect, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
 import Navbar from "components/Navbar";
 import HomePage from "pages/HomePage";
 import ProjectShowcase from "pages/ProjectShowcase";

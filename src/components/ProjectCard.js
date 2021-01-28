@@ -4,7 +4,7 @@ import subString from "utils/subString";
 import UpvoteBtn from "./UpvoteBtn";
 const ProjectCard = ({ project }) => {
   return (
-    <Link to={`/projectdetails/${project._id}`} className="w-full">
+    <Link to={`/projects/${project._id}`} className="w-full">
       <div className="border rounded-md p-4 text-left flex flex-row bg-white hover:bg-purple-50">
         <img
           src={project.imgUrl[0].url}

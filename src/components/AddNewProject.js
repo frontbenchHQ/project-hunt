@@ -16,7 +16,7 @@ const AddNewProject = () => {
     if (success) {
       const projectId = addedProjectInfo.project._id;
       dispatch({ type: ADD_PROJECT_RESET });
-      history.push(`/projectdetails/${projectId}`);
+      history.push(`/projects/${projectId}`);
     }
   }, [success, addedProjectInfo, dispatch, history]);
 
