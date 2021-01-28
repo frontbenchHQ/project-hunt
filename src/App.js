@@ -9,6 +9,9 @@ import ProjectDetails from "./components/ProjectDetails";
 import AddNewProject from "./components/AddNewProject";
 import ProtectedRoutes from "components/ProtectedRoutes";
 import Signup from "pages/Signup";
+import ProfilePage from "pages/ProfilePage";
+import "./global.css";
+import ProfileUpdatePage from "pages/ProfileUpdatePage";
 
 function App() {
   return (
@@ -22,11 +25,17 @@ function App() {
           <Route exact path="/signup" component={Signup} />
           <ProtectedRoutes
             exact
+            path="/profile-setting"
+            component={ProfileUpdatePage}
+          />
+          <Route exact path="/profile/:username" component={ProfilePage} />
+          <ProtectedRoutes
+            exact
             path="/addnewproject"
             component={AddNewProject}
           />
 
-          <Route exact path="/projectdetails">
+          <Route exact path="/projectdetails/:projectId">
             <ProjectDetails />
           </Route>
           <Redirect to="/" />

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "redux/actions/userAction";
+import { USER_REGISTER_RESET } from "redux/actionTypes";
 
 const Signup = () => {
   const dispatch = useDispatch();
@@ -11,9 +12,10 @@ const Signup = () => {
 
   useEffect(() => {
     if (success) {
+      dispatch({ type: USER_REGISTER_RESET });
       history.push("/login");
     }
-  });
+  }, [history, success, dispatch]);
 
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");

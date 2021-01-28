@@ -1,0 +1,8 @@
+.min-window-height {
+  min-height: calc(100vh - 128px);
+}
+@media screen and (max-width: 768px) {
+  .min-window-height {
+    min-height: calc(100vh - 112px);
+  }
+}

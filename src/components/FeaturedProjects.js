@@ -1,16 +1,42 @@
-import React from "react";
+import { useEffect } from "react";
 import ProjectCard from "./ProjectCard";
-import allProjects from "data/projectsData";
 
+import { useDispatch, useSelector } from "react-redux";
+import { getFeaturedProject } from "redux/actions/projectAction";
+import { FEATURED_PROJECT_RESET } from "redux/actionTypes";
+import Loader from "./Loader";
 const FeaturedProjects = () => {
+  const dispatch = useDispatch();
+  const featuredProjects = useSelector((state) => state.featuredProjects);
+  const { loading, error, featuredProjectsInfo } = featuredProjects;
+  useEffect(() => {
+    if (!featuredProjectsInfo) {
+      dispatch(getFeaturedProject());
+    }
+  }, [featuredProjectsInfo, dispatch]);
+  useEffect(() => {
+    return () => {
+      dispatch({ type: FEATURED_PROJECT_RESET });
+    };
+  }, [dispatch]);
   return (
     <div className="m-8 md:w-8/12">
       <h1 className="text-2xl md:text-left font-semibold mb-4">
         Featured Projects
       </h1>
-      {allProjects.map((project) => {
-        return <ProjectCard project={project} />;
-      })}
+      {loading ? (
+        <Loader message="Featured Project" />
+      ) : error ? (
+        <p className=" font-semibold text-red-500 ">{error}</p>
+      ) : featuredProjectsInfo ? (
+        featuredProjectsInfo.length === 0 ? (
+          "We Are Waiting For You to Create a Project"
+        ) : (
+          featuredProjectsInfo.map((project) => {
+            return <ProjectCard key={project._id} project={project} />;
+          })
+        )
+      ) : null}
     </div>
   );
 };
